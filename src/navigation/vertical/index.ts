@@ -8,7 +8,7 @@ const navigation = (): VerticalNavItemsType => {
     },
     {
       title: 'Dashboard',
-      path: '/',
+      path: '/dashboard',
       icon: 'mdi:home-outline'
     }
   ]
