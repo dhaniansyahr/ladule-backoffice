@@ -54,19 +54,33 @@ const Login = () => {
       <Card sx={{ width: '100%', maxWidth: '480px', zIndex: 1 }}>
         <CardContent sx={{ p: theme => `${theme.spacing(13, 7, 6.5)} !important` }}>
           <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Box>
-              <Image
-                priority
-                src='/images/nodewave.png'
-                height='480'
-                width='480'
-                alt='Hero'
-                style={{ height: 'auto', width: '48px' }}
-              />
+            <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Box>
+                <Image
+                  priority
+                  src='/images/nodewave.png'
+                  height='480'
+                  width='480'
+                  alt='Hero'
+                  style={{ height: 'auto', width: '48px' }}
+                />
+              </Box>
+              <Box sx={{ ml: 4 }}>
+                <Typography
+                  variant='h6'
+                  sx={{ mb: 0.5, lineHeight: 1, fontWeight: 700, fontSize: '1.5rem !important' }}
+                >
+                  {themeConfig.templateName}
+                </Typography>
+                <Typography variant='body1'>Backoffice</Typography>
+              </Box>
             </Box>
-            <Typography variant='h6' sx={{ ml: 2, lineHeight: 1, fontWeight: 700, fontSize: '1.5rem !important' }}>
-              {themeConfig.templateName}
-            </Typography>
+            <Box sx={{ mb: 6 }}>
+              <Typography variant='h5' sx={{ mb: 1.5, fontWeight: 600, letterSpacing: '0.18px' }}>
+                {`Welcome to ${themeConfig.templateName}!`}
+              </Typography>
+              <Typography variant='body2'>Please sign-in to your account and start to continue.</Typography>
+            </Box>
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ mb: 1.5, fontWeight: 600, letterSpacing: '0.18px' }}>
