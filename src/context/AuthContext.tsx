@@ -1,17 +1,17 @@
 // ** React Imports
-import { createContext, useEffect, useState, ReactNode } from 'react'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 
 // ** Next Import
 import { useRouter } from 'next/router'
 
 // ** Axios
-import axios from 'axios'
 
 // ** Config
 import authConfig from 'src/configs/auth'
 
 // ** Types
-import { AuthValuesType, LoginParams, ErrCallbackType, UserDataType } from './types'
+import api from 'src/service/api'
+import { AuthValuesType, ErrCallbackType, LoginParams, UserDataType } from './types'
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -42,15 +42,18 @@ const AuthProvider = ({ children }: Props) => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!
       if (storedToken) {
         setLoading(true)
-        await axios
-          .get(authConfig.meEndpoint, {
-            headers: {
-              Authorization: storedToken
-            }
+        await api
+          .post(authConfig.meEndpoint, {
+            token: `${storedToken}`
           })
           .then(async response => {
+            api.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`
+            api.defaults.headers.common['Timezone'] = Intl.DateTimeFormat().resolvedOptions().timeZone
+
             setLoading(false)
-            setUser({ ...response.data.userData })
+            setUser(JSON.parse(localStorage.getItem('userData')!))
+            // setUser({ ...response.data.content?.payload })
+            // localStorage.setItem('userData', JSON.stringify(response.data.content?.payload))
           })
           .catch(() => {
             localStorage.removeItem('userData')
@@ -58,9 +61,6 @@ const AuthProvider = ({ children }: Props) => {
             localStorage.removeItem('accessToken')
             setUser(null)
             setLoading(false)
-            if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-              router.replace('/login')
-            }
           })
       } else {
         setLoading(false)
@@ -68,26 +68,38 @@ const AuthProvider = ({ children }: Props) => {
     }
 
     initAuth()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
-    axios
+    api
       .post(authConfig.loginEndpoint, params)
       .then(async response => {
-        params.rememberMe
-          ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken)
-          : null
-        const returnUrl = router.query.returnUrl
+        window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.content?.token)
 
-        setUser({ ...response.data.userData })
-        params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.userData)) : null
-
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-
-        router.replace(redirectURL as string)
+        setUser({ ...response.data.content?.user })
+        await window.localStorage.setItem('userData', JSON.stringify(response.data.content?.user))
       })
+      .then(() => {
+        api
+          .post(authConfig.meEndpoint, {
+            token: `${window.localStorage.getItem(authConfig.storageTokenKeyName)}`!
+          })
+          .then(async response => {
+            const returnUrl = router.query.returnUrl
 
+            api.defaults.headers.common['Authorization'] = `Bearer ${window.localStorage.getItem(
+              authConfig.storageTokenKeyName
+            )}`
+            api.defaults.headers.common['Timezone'] = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+            // setUser({ ...response.data.content?.payload })
+            // localStorage.setItem('userData', JSON.stringify(response.data.content?.payload))
+
+            const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
+
+            window.location.href = redirectURL as string
+          })
+      })
       .catch(err => {
         if (errorCallback) errorCallback(err)
       })
