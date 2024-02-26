@@ -75,12 +75,6 @@ const Login = () => {
                 <Typography variant='body1'>Backoffice</Typography>
               </Box>
             </Box>
-            <Box sx={{ mb: 6 }}>
-              <Typography variant='h5' sx={{ mb: 1.5, fontWeight: 600, letterSpacing: '0.18px' }}>
-                {`Welcome to ${themeConfig.templateName}!`}
-              </Typography>
-              <Typography variant='body2'>Please sign-in to your account and start to continue.</Typography>
-            </Box>
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ mb: 1.5, fontWeight: 600, letterSpacing: '0.18px' }}>
