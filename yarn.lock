@@ -1152,13 +1152,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/cleave.js@1.4.7":
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/@types/cleave.js/-/cleave.js-1.4.7.tgz#ee1cddc1b83fa72491d1489f0ac8e860ac550974"
-  integrity sha512-0MatQhFMEsOWOjfY06z7Ez+84dWJFXWsqGRsZn+dxcZ8FqZbHftP4g4NIdpZmPm5I7RWmjDmrF5wtg99TVCgQA==
-  dependencies:
-    "@types/react" "*"
-
 "@types/d3-array@^3.0.3":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-3.0.4.tgz#44eebe40be57476cad6a0cd6a85b0f57d54185a2"
@@ -1235,13 +1228,6 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
-
-"@types/jsonwebtoken@8.5.9":
-  version "8.5.9"
-  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.5.9.tgz#2c064ecb0b3128d837d2764aa0b117b0ff6e4586"
-  integrity sha512-272FMnFGzAVMGtu9tkr29hRL6bZj4Zs1KZNeHLnKqAvp06tAIcarTMwOh8/8bz4FmKRcMxZhZNeUAQsNLoiPhg==
-  dependencies:
-    "@types/node" "*"
 
 "@types/node-fetch@^2.6.2":
   version "2.6.2"
@@ -3925,11 +3911,6 @@ prettier@2.8.4:
   version "2.8.4"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.4.tgz#34dd2595629bfbb79d344ac4a91ff948694463c3"
   integrity sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==
-
-prismjs@1.29.0:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
-  integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
