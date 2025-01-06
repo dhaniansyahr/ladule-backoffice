@@ -50,17 +50,17 @@ const MenuNavLink = styled(ListItemButton)<
   transition: 'padding-left .25s ease-in-out',
   '&.active': {
     '&, &:hover': {
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: theme.palette.common.white,
       '&.Mui-focusVisible': {
         backgroundColor: theme.palette.primary.main
       }
     },
     '& .MuiTypography-root': {
       fontWeight: 500,
-      color: `${theme.palette.common.white} !important`
+      color: `${theme.palette.primary.main} !important`
     },
     '& .MuiListItemIcon-root': {
-      color: `${theme.palette.common.white} !important`
+      color: `${theme.palette.primary.main} !important`
     }
   }
 }))
@@ -140,13 +140,15 @@ const VerticalNavLink = ({
             <ListItemIcon
               sx={{
                 transition: 'margin .25s ease-in-out',
-                color: parent ? 'text.secondary' : 'text.primary',
+                color: 'white',
                 ...(navCollapsed && !navHover ? { mr: 0 } : { mr: 2 }),
                 ...(parent ? { ml: 2, mr: 4 } : {}), // This line should be after (navCollapsed && !navHover) condition for proper styling
                 '& svg': {
                   ...(!parent ? { fontSize: '1.5rem' } : { fontSize: '0.5rem' }),
                   ...(parent && item.icon ? { fontSize: '0.875rem' } : {})
                 }
+
+                // color: parent ? 'text.secondary' : 'text.primary',
               }}
             >
               <UserIcon icon={icon as string} />
@@ -163,6 +165,7 @@ const VerticalNavLink = ({
               {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
                 noWrap: true
               })}
+              sx={{ color: 'white' }}
             >
               <Translations text={item.title} />
             </Typography>
