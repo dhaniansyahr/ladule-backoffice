@@ -21,7 +21,6 @@ import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
-import FooterIllustrations from 'src/components/templates/FooterIllustrations'
 import themeConfig from 'src/configs/themeConfig'
 import { useAuth } from 'src/hooks/useAuth'
 
@@ -31,7 +30,7 @@ const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
 
 const Login = () => {
   const auth = useAuth()
-  const { watch, setValue, handleSubmit, reset } = useForm()
+  const { watch, setValue, handleSubmit } = useForm()
 
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -45,6 +44,7 @@ const Login = () => {
       toast.dismiss()
       toast.error(err.response?.data?.message)
       setIsLoading(false)
+
       return
     })
   }
@@ -124,7 +124,7 @@ const Login = () => {
           </form>
         </CardContent>
       </Card>
-      <FooterIllustrations />
+      {/* <FooterIllustrations /> */}
     </Box>
   )
 }

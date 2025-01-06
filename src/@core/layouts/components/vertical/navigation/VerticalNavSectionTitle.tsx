@@ -29,7 +29,7 @@ const ListSubheader = styled((props: ListSubheaderProps) => <MuiListSubheader co
     padding: theme.spacing(3),
     marginTop: theme.spacing(6.25),
     backgroundColor: 'transparent',
-    color: theme.palette.text.disabled,
+    color: theme.palette.common.white,
     transition: 'padding-left .25s ease-in-out'
   })
 )
@@ -51,7 +51,12 @@ const VerticalNavSectionTitle = (props: Props) => {
           borderColor: `rgba(${theme.palette.customColors.dark}, 0.12)`
         }
       }
-    } else return {}
+    } else
+      return {
+        '&, &:before': {
+          borderColor: `white`
+        }
+      }
   }
 
   const conditionalColor = () => {
@@ -61,7 +66,9 @@ const VerticalNavSectionTitle = (props: Props) => {
       }
     } else {
       return {
-        color: 'text.disabled'
+        color: 'white'
+
+        // color: 'text.disabled'
       }
     }
   }

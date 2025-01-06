@@ -43,13 +43,15 @@ const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 const HeaderTitle = styled(Typography)<TypographyProps>({
   fontWeight: 700,
   lineHeight: 1.2,
-  transition: 'opacity .25s ease-in-out, margin .25s ease-in-out'
+  transition: 'opacity .25s ease-in-out, margin .25s ease-in-out',
+  color: 'white'
 })
 
 const LinkStyled = styled(Link)({
   display: 'flex',
   alignItems: 'center',
-  textDecoration: 'none'
+  textDecoration: 'none',
+  color: 'white'
 })
 
 const VerticalNavHeader = (props: Props) => {
@@ -142,7 +144,7 @@ const VerticalNavHeader = (props: Props) => {
             </Box>
             <Box sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 4 }) }}>
               <HeaderTitle variant='body1'>{themeConfig.templateName}</HeaderTitle>
-              <Typography>Backoffice</Typography>
+              <Typography sx={{ color: 'white' }}>Backoffice</Typography>
             </Box>
           </Box>
         </LinkStyled>

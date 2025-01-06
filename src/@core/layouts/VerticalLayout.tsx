@@ -107,9 +107,10 @@ const VerticalLayout = (props: LayoutProps) => {
                 '& > :first-of-type': { height: '100%' }
               }),
               ...(contentWidth === 'boxed' && {
-                mx: 'auto',
-                '@media (min-width:1440px)': { maxWidth: 1440 },
-                '@media (min-width:1200px)': { maxWidth: '100%' }
+                mx: 'auto'
+
+                // '@media (min-width:1440px)': { maxWidth: 1440 },
+                // '@media (min-width:1200px)': { maxWidth: '100%' }
               })
             }}
           >

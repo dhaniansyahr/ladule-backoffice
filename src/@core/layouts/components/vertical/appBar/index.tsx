@@ -24,13 +24,16 @@ const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(0, 6),
-  backgroundColor: 'transparent',
-  color: theme.palette.text.primary,
+  backgroundColor: theme.palette.primary.main,
+  color: 'white',
   minHeight: theme.mixins.toolbar.minHeight,
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4)
   }
+
+  // backgroundColor: 'transparent',
+  // color: theme.palette.text.primary,
 }))
 
 const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({

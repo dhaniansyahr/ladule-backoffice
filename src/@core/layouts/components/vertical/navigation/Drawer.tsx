@@ -106,7 +106,8 @@ const Drawer = (props: Props) => {
       {...(hidden ? { ...MobileDrawerProps } : { ...DesktopDrawerProps })}
       PaperProps={{
         sx: {
-          backgroundColor: 'background.default',
+          backgroundColor: theme => theme.palette.primary.main,
+          color: theme => theme.palette.common.white,
           width: navCollapsed && !navHover ? collapsedNavWidth : navWidth,
           ...(!hidden && navCollapsed && navHover ? { boxShadow: 10 } : {}),
           borderRight: theme =>
@@ -114,6 +115,8 @@ const Drawer = (props: Props) => {
           ...userNavMenuPaperStyle
         },
         ...navMenuProps?.PaperProps
+
+        // backgroundColor: 'background.default',
       }}
       sx={{
         width: navCollapsed ? collapsedNavWidth : navWidth,

@@ -46,12 +46,13 @@ const AuthProvider = ({ children }: Props) => {
           .post(authConfig.meEndpoint, {
             token: `${storedToken}`
           })
-          .then(async response => {
+          .then(async () => {
             api.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`
             api.defaults.headers.common['Timezone'] = Intl.DateTimeFormat().resolvedOptions().timeZone
 
             setLoading(false)
             setUser(JSON.parse(localStorage.getItem('userData')!))
+
             // setUser({ ...response.data.content?.payload })
             // localStorage.setItem('userData', JSON.stringify(response.data.content?.payload))
           })
@@ -68,7 +69,7 @@ const AuthProvider = ({ children }: Props) => {
     }
 
     initAuth()
-  }, [])
+  }, [router])
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     api
@@ -76,15 +77,15 @@ const AuthProvider = ({ children }: Props) => {
       .then(async response => {
         window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.content?.token)
 
-        setUser({ ...response.data.content?.user })
-        await window.localStorage.setItem('userData', JSON.stringify(response.data.content?.user))
+        setUser({ ...response.data.content?.user, role: 'ADMIN' })
+        await window.localStorage.setItem('userData', JSON.stringify({ ...response.data.content?.user, role: 'ADMIN' }))
       })
       .then(() => {
         api
           .post(authConfig.meEndpoint, {
             token: `${window.localStorage.getItem(authConfig.storageTokenKeyName)}`!
           })
-          .then(async response => {
+          .then(async () => {
             const returnUrl = router.query.returnUrl
 
             api.defaults.headers.common['Authorization'] = `Bearer ${window.localStorage.getItem(

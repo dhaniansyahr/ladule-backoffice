@@ -11,7 +11,6 @@ import { Settings } from 'src/@core/context/settingsContext'
 
 // ** Components
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
-import themeConfig from 'src/configs/themeConfig'
 
 interface Props {
   hidden: boolean
@@ -22,7 +21,9 @@ interface Props {
 
 const AppBarContent = (props: Props) => {
   // ** Props
-  const { hidden, settings, saveSettings, toggleNavVisibility } = props
+  const { hidden, settings, toggleNavVisibility } = props
+
+  // const { hidden, settings, saveSettings, toggleNavVisibility } = props
 
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -32,8 +33,9 @@ const AppBarContent = (props: Props) => {
             <Icon icon='mdi:menu' />
           </IconButton>
         ) : null}
-        <Typography>{themeConfig.templateName}</Typography>{' '}
-        {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
+        <Typography variant='h6' sx={{ color: 'white' }}>
+          Sistem Penjadwalan Praktikum
+        </Typography>
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <UserDropdown settings={settings} />
