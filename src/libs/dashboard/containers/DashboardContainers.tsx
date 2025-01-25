@@ -3,57 +3,13 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import { Box, Button, CircularProgress, Divider } from '@mui/material'
+import { Box, Button, CircularProgress } from '@mui/material'
 import { DataGrid, gridClasses } from '@mui/x-data-grid'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function DashboardContainers() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [data, setData] = useState<any>({
-    entries: [
-      {
-        index: 1,
-        mataKuliah: {
-          nama: 'Pemrograman Web'
-        },
-        dosen: {
-          nama: 'Dr. Budi Santoso'
-        },
-        ruangan: {
-          nama: 'Lab Komputer 1',
-          lokasi: 'Gedung A Lt. 3'
-        }
-      },
-      {
-        index: 2,
-        mataKuliah: {
-          nama: 'Basis Data'
-        },
-        dosen: {
-          nama: 'Dr. Siti Aminah'
-        },
-        ruangan: {
-          nama: 'Lab Database',
-          lokasi: 'Gedung B Lt. 2'
-        }
-      },
-      {
-        index: 3,
-        mataKuliah: {
-          nama: 'Jaringan Komputer'
-        },
-        dosen: {
-          nama: 'Dr. Ahmad Wijaya'
-        },
-        ruangan: {
-          nama: 'Lab Networking',
-          lokasi: 'Gedung A Lt. 4'
-        }
-      }
-    ],
-    totalData: 3,
-    totalPages: 1
-  })
+  const [data, setData] = useState<any>(null)
 
   const columns = [
     {
@@ -107,6 +63,62 @@ export default function DashboardContainers() {
       }
     }
   ]
+
+  const handleGetData = async () => {
+    setIsLoading(true)
+
+    setData({
+      entries: [
+        {
+          index: 1,
+          mataKuliah: {
+            nama: 'Pemrograman Web'
+          },
+          dosen: {
+            nama: 'Dr. Budi Santoso'
+          },
+          ruangan: {
+            nama: 'Lab Komputer 1',
+            lokasi: 'Gedung A Lt. 3'
+          }
+        },
+        {
+          index: 2,
+          mataKuliah: {
+            nama: 'Basis Data'
+          },
+          dosen: {
+            nama: 'Dr. Siti Aminah'
+          },
+          ruangan: {
+            nama: 'Lab Database',
+            lokasi: 'Gedung B Lt. 2'
+          }
+        },
+        {
+          index: 3,
+          mataKuliah: {
+            nama: 'Jaringan Komputer'
+          },
+          dosen: {
+            nama: 'Dr. Ahmad Wijaya'
+          },
+          ruangan: {
+            nama: 'Lab Networking',
+            lokasi: 'Gedung A Lt. 4'
+          }
+        }
+      ],
+      totalData: 3,
+      totalPages: 1
+    })
+
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    handleGetData()
+  }, [])
 
   return (
     <Grid container spacing={6}>
