@@ -1,7 +1,7 @@
 import { Box, Button, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
 import Icon from 'src/@core/components/icon'
-import { checkFileType } from 'src/libs/utils'
+import { checkFileType } from 'src/utils'
 
 interface IFileInputSingle {
   id: string
