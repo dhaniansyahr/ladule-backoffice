@@ -22,7 +22,7 @@ const FallbackSpinner = ({ sx }: { sx?: BoxProps['sx'] }) => {
       <Box>
         <Image
           priority
-          src='/images/nodewave.png'
+          src='/images/labdule.jpeg'
           height='480'
           width='480'
           alt='Hero'
