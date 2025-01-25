@@ -13,11 +13,11 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setIsRefresh: (state, action) => {}
+    setIsRefresh: () => {}
   },
   extraReducers: builder => {
-    builder.addCase(resetPassword.fulfilled, (state, { payload }) => {})
-    builder.addCase(resetPassword.rejected, state => {})
+    builder.addCase(resetPassword.fulfilled, () => {})
+    builder.addCase(resetPassword.rejected, () => {})
   }
 })
 
